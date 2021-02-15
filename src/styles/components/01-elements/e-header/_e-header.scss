@@ -1,0 +1,36 @@
+.e-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height:80px;
+  width: 100%;
+  padding-top: $p-1;
+  padding-bottom: $p-1;
+  padding-left: $p-5;
+  padding-right: $p-5;
+
+
+  .__header-logo {
+    display: flex;
+    align-items: center;
+    h1{
+      margin-right: $m-1;
+    }
+  }
+
+  .__header-icons {
+    display: flex;
+    align-items: center;
+
+    a{
+      color: $color-primary;
+      margin-left: $m-2;
+      padding: $p-1;
+
+      &:hover{
+        color: $color-secundary;
+      }
+
+    }
+  }
+}
