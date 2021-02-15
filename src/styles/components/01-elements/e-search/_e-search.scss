@@ -1,0 +1,42 @@
+.e-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .__form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    margin-top: $m-3;
+    margin-bottom: $m-3;
+
+    input {
+      flex: 1;
+      height: 40px;
+      padding: 0 20px;
+      background: $color-black;
+      font-size: 18px;
+      color: $color-gray;
+      border-radius: 3px;
+      border: 1px solid $color-primary;
+    }
+
+    button {
+      width: 110px;
+      height: 40px;
+      text-align: center;
+      margin-left: $m-2;
+      background: $color-primary;
+      color: $color-purple;
+      border: none;
+      font-size: $text-xxl;
+      font-weight: $fw-600;
+      border-radius: 3px;
+
+      &:hover {
+        background: $color-purple;
+        color: $color-primary;
+      }
+    }
+  }
+}

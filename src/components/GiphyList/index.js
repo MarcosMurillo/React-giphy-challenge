@@ -10,7 +10,7 @@ export default function GiphyList() {
   // }
   return (
     <>
-      <div className="e-list">
+      <div className="e-search">
         <form className="__form" onSubmit={() => {}}>
           <input
             type="text"
@@ -23,11 +23,14 @@ export default function GiphyList() {
           </button>
         </form>
       </div>
-
-      <div>
-        {mock.data.map((item) => (
-          <img src={item.images.fixed_height.url} alt={item.title} />
-        ))}
+      <div className="container">
+        <ul className="e-list">
+          {mock.data.map((giphy) => (
+            <li key={giphy.id}>
+              <img src={giphy.images.fixed_height.url} alt={giphy.title} />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 // Colors
-$color-primary: #00CBFE;
-$color-secundary: #00FF99;
+$color-primary: #00cbfe;
+$color-secundary: #00ff99;
 $color-gray: #919191;
 $color-black: #000000;
 $color-white: #ffffff;
-$color-purple: #6158FE;
+$color-purple: #6158fe;
 
 // Default Unit sizes
 $border-unit-size: px;
@@ -45,11 +45,3 @@ $m-2: 0.5rem;
 $m-3: 1rem;
 $m-4: 1.5rem;
 $m-5: 3rem;
-
-// Box Shadow Card Default
-$box-shadow-default: 0 3px 5px 0 rgba(60, 75, 100, 0.14),
-  0 2px 1px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
-$box-shadow-hover-default: 0 8px 12px 0 rgba(60, 75, 100, 0.14),
-  0 2px 6px -1px rgba(60, 75, 100, 0.12), 0 1px 3px 0 rgba(60, 75, 100, 0.2);
-
-$pagination-box-shadow: 0px 3px 6px #00000010;
