@@ -1,10 +1,9 @@
-import React from 'react'
-import {FaSearch} from 'react-icons/fa'
+import React from "react";
+import { FaSearch } from "react-icons/fa";
 //import { api, authorization } from "../../services/api";
-import {mock} from '../../services/mock'
+import { mock } from "../../services/mock";
 
-
-export default function GiphyList(){
+export default function GiphyList() {
   // async function fetchData(){
   //   const response = await api.get('/trending', {headers: authorization})
   //   return response
@@ -12,7 +11,7 @@ export default function GiphyList(){
   return (
     <>
       <div className="e-list">
-        <form className="__form"onSubmit={()=>{}}>
+        <form className="__form" onSubmit={() => {}}>
           <input
             type="text"
             placeholder="Search"
@@ -24,15 +23,12 @@ export default function GiphyList(){
           </button>
         </form>
       </div>
-      
-      <div>
 
-        {mock.data.map(item => (
+      <div>
+        {mock.data.map((item) => (
           <img src={item.images.fixed_height.url} alt={item.title} />
         ))}
-
       </div>
-    
     </>
-  )
+  );
 }
