@@ -1,9 +1,40 @@
+.favorite-gifs {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: $p-5;
+
+  button {
+    display: flex;
+    justify-content: space-between;
+    line-height: 23px;
+    background-color: transparent;
+    font-size: $text-lg;
+    color: $color-gray;
+    width: 150px;
+    &:hover {
+      color: $color-primary;
+      border-bottom: 1px solid $color-primary;
+    }
+  }
+}
+
+.feedback-user {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
 .list-container {
   overflow: auto;
   max-height: auto;
   max-width: auto;
   padding: $p-5;
 }
+
 .e-list {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -27,6 +58,28 @@
     img {
       align-self: center;
       max-width: 250px;
+    }
+
+    .selected-gif {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-top: $p-3;
+
+      button {
+        display: flex;
+        justify-content: space-between;
+        line-height: 23px;
+        background-color: transparent;
+        font-size: $text-lg;
+        color: $color-gray;
+        width: 70px;
+        &:hover {
+          color: $color-primary;
+        }
+      }
     }
   }
 

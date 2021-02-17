@@ -30,10 +30,10 @@ export default function GiphyList() {
     }
     e.preventDefault();
     setOffset(offset + arraySize);
-    const { data, pagination } = await api.get(
+    const { data } = await api.get(
       `/search?q=${inputValue}&api_key=I8Tl1S2Ras9ILwz2jV9gBp71B97HCBlA&limit=${arraySize}&offset=${offset}`
     );
-    setTotalCount(pagination.total_count);
+    setTotalCount(data.pagination.total_count);
     setHasMore(true);
     setGifs(gifs.concat(data.data));
   }
@@ -69,14 +69,14 @@ export default function GiphyList() {
             <FaSearch />
           </button>
         </form>
-        <div>
+        <div className="favorite-gifs">
           <button>
-            <FaSave />
+            <FaSave className="color-white icon-xl" /> Meus gifs salvos
           </button>
         </div>
       </div>
-      <div className="list-container">
-        {gifs.length && (
+      {gifs.length ? (
+        <div className="list-container">
           <InfiniteScroll
             dataLength={gifs.length}
             next={() => {
@@ -84,7 +84,7 @@ export default function GiphyList() {
             }}
             hasMore={hasMore}
             loader={
-              hasMore() && (
+              hasMore && (
                 <span className="color-white text-sm fw-600">Loading...</span>
               )
             }
@@ -93,13 +93,24 @@ export default function GiphyList() {
               {gifs.map((giphy, index) => (
                 <li key={`${giphy.id}-${index}`}>
                   <img src={giphy.images.fixed_height.url} alt={giphy.title} />
-                  <FaSave className="icon-xxl" />
+                  <div className="selected-gif">
+                    <button>
+                      <FaSave className="color-primary icon-xl" />
+                      Salvar
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
           </InfiniteScroll>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="feedback-user">
+          <p className="color-primary text-xl">
+            Pesquise para visualizar os gifs
+          </p>
+        </div>
+      )}
     </>
   );
 }
