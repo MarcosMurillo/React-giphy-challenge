@@ -2,16 +2,15 @@ import React, { useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { api } from "../../services/api";
-import { mock } from "../../services/mock";
 
 export default function GiphyList() {
-  const [gifs, setGifs] = useState(mock.data);
-  const [offset, setOffset] = useState(24);
+  const [gifs, setGifs] = useState([]);
+  const [offset, setOffset] = useState(0);
   const inputEl = useRef("");
   const arraySize = 24;
 
   function resetList() {
-    setGifs(null);
+    setGifs([]);
     setOffset(0);
   }
 
@@ -25,15 +24,15 @@ export default function GiphyList() {
     setGifs(gifs.concat(data.data));
   }
 
-  async function fetchInitialData() {
-    setOffset(offset + arraySize);
-    setTimeout(async () => {
-      const { data } = await api.get(
-        `/search?q=starwars&api_key=I8Tl1S2Ras9ILwz2jV9gBp71B97HCBlA&limit=${arraySize}&offset=${offset}`
-      );
-      setGifs(gifs.concat(data.data));
-    }, 1500);
-  }
+  // async function fetchInitialData() {
+  //   setOffset(offset + arraySize);
+  //   setTimeout(async () => {
+  //     const { data } = await api.get(
+  //       `/search?q=starwars&api_key=I8Tl1S2Ras9ILwz2jV9gBp71B97HCBlA&limit=${arraySize}&offset=${offset}`
+  //     );
+  //     setGifs(gifs.concat(data.data));
+  //   }, 1500);
+  // }
 
   return (
     <>
@@ -51,11 +50,11 @@ export default function GiphyList() {
         </form>
       </div>
       <div className="list-container">
-        <InfiniteScroll
+        {gifs.length && <InfiniteScroll
           dataLength={gifs.length}
-          next={fetchInitialData}
+          next={handleSearch()}
           hasMore={true}
-          loader={<h4>Loading...</h4>}
+          loader={<span className="color-white text-sm fw-600">Loading...</span>}
         >
           <ul className="e-list">
             {gifs.map((giphy, index) => (
@@ -64,7 +63,7 @@ export default function GiphyList() {
               </li>
             ))}
           </ul>
-        </InfiniteScroll>
+        </InfiniteScroll>}
       </div>
     </>
   );
