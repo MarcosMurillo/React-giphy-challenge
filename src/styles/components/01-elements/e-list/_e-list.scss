@@ -6,14 +6,13 @@
   align-items: center;
   padding: $p-5;
 
-  a {
+  button {
     display: flex;
     justify-content: space-between;
     line-height: 23px;
     background-color: transparent;
     font-size: $text-lg;
     color: $color-gray;
-    text-decoration: none;
     width: 150px;
     &:hover {
       color: $color-primary;

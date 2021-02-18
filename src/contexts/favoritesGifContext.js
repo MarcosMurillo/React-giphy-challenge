@@ -15,9 +15,7 @@ export default function FavoritesGifProvider({ children }) {
       size: gif.size,
       url: gif.url,
     };
-    // console.log("newGifContext: ", newGif);
     setFavoriteGifs([...favoriteGifs, newGif]);
-    // console.log("favoriteGif: ", favoriteGifs);
   }
 
   return (
