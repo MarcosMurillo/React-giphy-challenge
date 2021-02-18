@@ -1,13 +1,18 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import Routes from "./routes";
-// import "./include/bootstrap";
+import history from "./services/history";
+import FavoritesGifProvider from "./contexts/favoritesGifContext";
 import "./styles/global.scss";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <FavoritesGifProvider>
+      <BrowserRouter history={history}>
+        <Switch>
+          <Routes />
+        </Switch>
+      </BrowserRouter>
+    </FavoritesGifProvider>
   );
 }
