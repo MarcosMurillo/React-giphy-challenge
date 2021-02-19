@@ -6,7 +6,6 @@ export default function FavoritesGifProvider({ children }) {
   const [favoriteGifs, setFavoriteGifs] = useState([]);
 
   function saveGif(gif) {
-    console.log(gif);
     const newGif = {
       id: gif.id,
       title: gif.title,

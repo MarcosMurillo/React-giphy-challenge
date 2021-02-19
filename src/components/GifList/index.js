@@ -20,7 +20,6 @@ export default function GifList({ gifs, hasMore, loadMore }) {
   }
 
   function handleSaveGif(gif) {
-    console.log(gif);
     const updateGif = {
       ...newGif,
       id: gif.id,
