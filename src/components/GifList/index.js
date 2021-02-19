@@ -1,29 +1,39 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import moment from "moment";
 import { FaSave } from "react-icons/fa";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function GifList({ gifs, hasMore, loadMore }) {
-  const [newGif, setNewGif] = useState([]);
-  const { saveGif, favoriteGifs } = useContext(FavoritesGifContext);
+  const [newGif] = useState([]);
+  const { saveGif } = useContext(FavoritesGifContext);
+
+  function convertSizeFile(fileSize) {
+    const size = ["Bytes", "KB", "MB", "GB", "TB"];
+    if (fileSize === 0) return "0 Byte";
+    const _fileSize = parseInt(Math.floor(Math.log(fileSize) / Math.log(1024)));
+    return (
+      Math.round(fileSize / Math.pow(1024, _fileSize), 2) +
+      " " +
+      size[_fileSize]
+    );
+  }
 
   function handleSaveGif(gif) {
-    console.log("gif before state: ", gif);
-    const newGif1 = {
+    console.log(gif);
+    const updateGif = {
       ...newGif,
       id: gif.id,
       title: gif.title,
-      height: gif.images.fixed_height.height,
-      width: gif.images.fixed_height.width,
-      size: gif.images.fixed_height.size,
-      url: gif.images.fixed_height.url,
+      image: gif.images.original.url,
+      height: gif.images.original.height,
+      width: gif.images.original.width,
+      size: convertSizeFile(gif.images.original.size),
+      url: gif.url,
+      created: moment(gif.import_datetime).format("DD/MM/YYYY HH:mm:ss"),
     };
-    saveGif(newGif1);
+    saveGif(updateGif);
   }
-
-  useEffect(() => {
-    console.table(favoriteGifs);
-  }, [favoriteGifs]);
   return (
     <>
       {gifs.length ? (

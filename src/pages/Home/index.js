@@ -6,7 +6,7 @@ import { api } from "../../services/api";
 
 export default function Home({ history }) {
   const [totalCount, setTotalCount] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(null);
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(false);
@@ -17,6 +17,7 @@ export default function Home({ history }) {
     setGifs([]);
     setOffset(0);
   }
+
   function handleMyGifs() {
     history.push("/favorites");
   }
@@ -56,7 +57,7 @@ export default function Home({ history }) {
 
   return (
     <>
-      <Header />
+      <Header history={history} />
       <div className="e-search">
         <form
           className="__form"

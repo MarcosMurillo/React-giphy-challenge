@@ -13,7 +13,9 @@ export default function FavoritesGifProvider({ children }) {
       height: gif.height,
       width: gif.width,
       size: gif.size,
+      image: gif.image,
       url: gif.url,
+      created: gif.created,
     };
     setFavoriteGifs([...favoriteGifs, newGif]);
   }

@@ -1,0 +1,65 @@
+.e-my-gifs {
+  list-style: none;
+  padding: $p-5;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $m-3;
+    border: 1px solid $color-gray;
+    background: #fff;
+    border-radius: 4px;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-top: $m-2;
+    }
+
+    .view-original {
+      text-decoration: none;
+      font-size: $text-md;
+      color: $color-gray;
+      border: 1px solid $color-gray;
+      border-radius: 4px;
+      width: 110px;
+      text-align: center;
+      margin-top: $m-2;
+
+      &:hover {
+        background: $color-purple;
+        color: $color-white;
+        transition: background-color 0.15s ease-in-out;
+      }
+    }
+
+    .icon-space {
+      margin-bottom: $p-2;
+      margin-left: 4px;
+    }
+
+    .icon-effect {
+      &:hover {
+        color: $color-purple;
+      }
+    }
+    .wrapper-icons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: $icon-xxl;
+      color: $color-gray;
+      width: 40px;
+    }
+
+    img {
+      padding: $p-1;
+      border-radius: 8px;
+      max-width: 150px;
+      height: 150px;
+      margin-right: $m-2;
+    }
+  }
+}
