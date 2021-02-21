@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 export default function MyFavoriteGifList() {
-  const { favoriteGifs } = useContext(FavoritesGifContext);
+  const { favoriteGifs, removeGif } = useContext(FavoritesGifContext);
+  const [myGifs, setMyGifs] = useState(favoriteGifs);
+
+  function handleRemoveGif(id) {
+    const gifId = id;
+    const result = myGifs.filter((gif) => gif.id !== gifId);
+    setMyGifs(result);
+    removeGif(gifId);
+  }
+
   return (
-    <div>
+    <div className="container-list">
       <ul className="e-my-gifs">
-        {favoriteGifs.map((gif, index) => (
+        {myGifs.map((gif, index) => (
           <li key={index}>
             <img src={gif.image} alt={gif.title} />
             <div className="wrapper">
@@ -30,8 +39,13 @@ export default function MyFavoriteGifList() {
               </div>
             </div>
             <div className="wrapper-icons">
-              <FaEdit className="icon-space icon-effect" />
-              <FaTrash className="icon-effect" />
+              <FaEdit className="icon-space icon-effect" onClick={() => {}} />
+              <FaTrash
+                className="icon-effect"
+                onClick={() => {
+                  handleRemoveGif(gif.id);
+                }}
+              />
             </div>
           </li>
         ))}

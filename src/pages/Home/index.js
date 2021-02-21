@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Header from "../../components/Header";
 import GifList from "../../components/GifList";
-import { FaSearch, FaSave } from "react-icons/fa";
+import { FaSearch, FaStar } from "react-icons/fa";
 import { api } from "../../services/api";
 
 export default function Home({ history }) {
@@ -82,7 +82,7 @@ export default function Home({ history }) {
             handleMyGifs();
           }}
         >
-          <FaSave className="color-white icon-xl" /> Meus gifs salvos
+          <FaStar className="color-white icon-xl" /> My favorite gifs
         </button>
       </div>
       <GifList

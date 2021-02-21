@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import moment from "moment";
-import { FaSave } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -49,18 +49,17 @@ export default function GifList({ gifs, hasMore, loadMore }) {
           >
             <ul className="e-list">
               {gifs.map((gif, index) => (
-                <li key={`${index}`}>
+                <li
+                  key={index}
+                  onClick={() => {
+                    handleSaveGif(gif);
+                  }}
+                >
                   <img src={gif.images.fixed_height.url} alt={gif.title} />
-                  <div className="selected-gif">
-                    <button
-                      onClick={() => {
-                        handleSaveGif(gif);
-                      }}
-                    >
-                      <FaSave className="color-primary icon-xl" />
-                      Salvar
-                    </button>
-                  </div>
+                  <span>
+                    <FaStar className="color-white icon-xl" />
+                    Add to favorites
+                  </span>
                 </li>
               ))}
             </ul>
@@ -68,9 +67,7 @@ export default function GifList({ gifs, hasMore, loadMore }) {
         </div>
       ) : (
         <div className="feedback-user">
-          <p className="color-primary text-xl">
-            Pesquise para visualizar os gifs
-          </p>
+          <p className="color-primary text-xl">Search to view gifs</p>
         </div>
       )}
     </>

@@ -19,8 +19,15 @@ export default function FavoritesGifProvider({ children }) {
     setFavoriteGifs([...favoriteGifs, newGif]);
   }
 
+  function removeGif(id) {
+    const gifId = id;
+    const handleList = favoriteGifs.filter((gif) => gif.id !== gifId);
+
+    setFavoriteGifs(handleList);
+  }
+
   return (
-    <FavoritesGifContext.Provider value={{ favoriteGifs, saveGif }}>
+    <FavoritesGifContext.Provider value={{ favoriteGifs, saveGif, removeGif }}>
       {children}
     </FavoritesGifContext.Provider>
   );

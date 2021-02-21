@@ -13,7 +13,7 @@
     background-color: transparent;
     font-size: $text-lg;
     color: $color-gray;
-    width: 150px;
+    width: 135px;
     &:hover {
       color: $color-primary;
       transition: color 0.3s ease-in-out;
@@ -46,13 +46,16 @@
     flex-direction: column;
     border-radius: 4px;
     padding: 20px;
-    border: 1px solid $color-purple;
     max-width: 270px;
     transition: border 0.15s ease-in-out;
     &:hover {
       border: 1px solid $color-secundary;
       transition: border 0.15s ease-in-out;
       cursor: pointer;
+
+      span {
+        color: $color-secundary;
+      }
     }
 
     img {
@@ -60,25 +63,19 @@
       max-width: 250px;
     }
 
-    .selected-gif {
-      width: 100%;
-      height: 100%;
+    span {
       display: flex;
       justify-content: center;
+      line-height: 15px;
+      background-color: transparent;
+      font-size: $text-lg;
+      color: $color-gray;
+      width: 100%;
+      height: 100%;
       align-items: flex-end;
       padding-top: $p-3;
-
-      button {
-        display: flex;
-        justify-content: space-between;
-        line-height: 23px;
-        background-color: transparent;
-        font-size: $text-lg;
-        color: $color-gray;
-        width: 70px;
-        &:hover {
-          color: $color-primary;
-        }
+      svg {
+        margin-right: $m-2;
       }
     }
   }
