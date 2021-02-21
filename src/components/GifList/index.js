@@ -3,6 +3,7 @@ import moment from "moment";
 import { FaStar } from "react-icons/fa";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { toast } from "react-toastify";
 
 export default function GifList({ gifs, hasMore, loadMore }) {
   const [newGif] = useState([]);
@@ -19,6 +20,10 @@ export default function GifList({ gifs, hasMore, loadMore }) {
     );
   }
 
+  function notifyAddToFavoriteGifs(message) {
+    toast.success(message);
+  }
+
   function handleSaveGif(gif) {
     const updateGif = {
       ...newGif,
@@ -32,6 +37,7 @@ export default function GifList({ gifs, hasMore, loadMore }) {
       created: moment(gif.import_datetime).format("DD/MM/YYYY HH:mm:ss"),
     };
     saveGif(updateGif);
+    notifyAddToFavoriteGifs("Very Nice! GIF successfully added");
   }
   return (
     <>
