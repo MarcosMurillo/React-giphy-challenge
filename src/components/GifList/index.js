@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { toast } from "react-toastify";
 
 export default function GifList({ gifs, hasMore, loadMore }) {
-  const [newGif] = useState([]);
+  const [newGif, setNewGif] = useState([]);
   const { saveGif } = useContext(FavoritesGifContext);
 
   function convertSizeFile(fileSize) {
@@ -20,13 +20,12 @@ export default function GifList({ gifs, hasMore, loadMore }) {
     );
   }
 
-  function notifyAddToFavoriteGifs(message) {
-    toast.success(message);
-  }
-
   function handleSaveGif(gif) {
+    const gifId = gif.id;
+    const gifAlreadyExists = newGif.filter((gif) => gif.id === gifId);
+    if (gifAlreadyExists.length) return toast.error("Ops! GIF already added");
+
     const updateGif = {
-      ...newGif,
       id: gif.id,
       title: gif.title,
       image: gif.images.original.url,
@@ -36,8 +35,9 @@ export default function GifList({ gifs, hasMore, loadMore }) {
       url: gif.url,
       created: moment(gif.import_datetime).format("DD/MM/YYYY HH:mm:ss"),
     };
+    setNewGif([...newGif, updateGif]);
     saveGif(updateGif);
-    notifyAddToFavoriteGifs("Very Nice! GIF successfully added");
+    toast.success("Very Nice! GIF successfully added");
   }
   return (
     <>

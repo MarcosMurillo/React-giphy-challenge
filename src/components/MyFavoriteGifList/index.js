@@ -6,16 +6,12 @@ export default function MyFavoriteGifList() {
   const { favoriteGifs, removeGif } = useContext(FavoritesGifContext);
   const [myGifs, setMyGifs] = useState(favoriteGifs);
 
-  function notifyRemoveGif(message) {
-    toast.success(message);
-  }
-
   function handleRemoveGif(id) {
     const gifId = id;
     const result = myGifs.filter((gif) => gif.id !== gifId);
     setMyGifs(result);
     removeGif(gifId);
-    notifyRemoveGif("OK ! GIF removed");
+    toast.success("OK ! GIF removed");
   }
 
   return (

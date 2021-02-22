@@ -30,15 +30,10 @@ export default function Home({ history }) {
     } else return;
   }
 
-  function notifySearch(message) {
-    toast.error(message);
-  }
-
   async function handleSearch(e) {
-    console.log(inputEl.current.value);
     if (inputEl.current.value === "" || inputEl.current.value === null) {
       e.preventDefault();
-      notifySearch("Ops! Inform a value to search");
+      toast.error("Ops! Inform a value to search");
       return;
     }
     e.preventDefault();
