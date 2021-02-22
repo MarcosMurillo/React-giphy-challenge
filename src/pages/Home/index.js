@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import GifList from "../../components/GifList";
 import { FaSearch, FaStar } from "react-icons/fa";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
 export default function Home({ history }) {
   const [totalCount, setTotalCount] = useState(0);
@@ -29,9 +30,16 @@ export default function Home({ history }) {
     } else return;
   }
 
+  function notifySearch(message) {
+    toast.error(message);
+  }
+
   async function handleSearch(e) {
-    if (inputEl.current.value === "") {
-      return alert("Ops! Informe um valor para realizar a pesquisa");
+    console.log(inputEl.current.value);
+    if (inputEl.current.value === "" || inputEl.current.value === null) {
+      e.preventDefault();
+      notifySearch("Ops! Informe um valor para realizar a pesquisa");
+      return;
     }
     e.preventDefault();
     setOffset(offset + arraySize);

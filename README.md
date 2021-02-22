@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Documentação do desafio.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Olá avaliadores, irei guia-los a como instalar e executar o projeto.
+Tambem irei apresentar detalhadamente as tecnologias que utilizei e o porque.
 
-## Available Scripts
+## Instalação, execução, testes via scripts
 
-In the project directory, you can run:
+Dentro do diretório frontend execute os seguintes comandos:
+
+### `yarn install`
+
+Esse comando irá instalar todas as dependencias do projeto em sua maquina.
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Após a instalação das dependecias da aplição, rode mais esse comando, para a executar a aplicação
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `yarn cypress`
 
-### `yarn test`
+Para rodar os testes desenvolvidos na aplicação, rode apenas esse comando que irá abrir uma nova interface, com as pastas onde se encontra as testes. Dentro dessa pasta podemos dar duplo click no arquivo de teste em que queremos rodar ou podemos rodar todos de uma vez.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Tecnologias utilizadas.
 
-### `yarn build`
+## 1. Framework React JS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Falando em arquitetura de pastas, segui o que considero o mais ideal, todos os projetos que desenvolvo, separo bem as coisas, porque acho que fica melhor organizado, e acredito que seja mais rapida a minha fixação, caso precise criar um novo aquivo, ou buscar um que ja exista.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Utiizei como Gerenciamento de estado a Context API do próprio React, por ser mais rapida a implementação e menos verbosa que o redux.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 2. SCSS
 
-### `yarn eject`
+para criar a estilização da aplicação utilizei Scss por ter um dominio maior, e que considero mais tranquilo tambem a questão de trabalhar com alguns conseitos de atomic design, organizei tambem dessa mesma maneira a pasta styles, onde usei os arquivos separados por: global para aplicação, componentes, e dependencias.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 3. Axios
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para realizar as requisições escolhi o axios, separei em uma pasta services onde contem um arquivo com api com a minha baseUrl, e na pagina que eu preciso eu disparo a requisição apenas do meu end-point, acredito que assim é mais organizado de se fazer.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 4. Moment JS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Para tratar as datas e horas da aplicação optei por usar o momentjs por ja estar acostumado com a biblioteca, e familiarizado com suas respectivas funções.
 
-## Learn More
+## 5. React-Icons
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Utilizei a biblioteca react-icons, por ser um local onde se eu precisar utilizar icones do Font Awesome, Meterial Design, entre outros eu não precise importar cada uma delas para o projeto.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 6. React-Toastfy
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para apresentar feedbacks para usuario, de um item adicionado na lista de favoritos, ou mensagens de erro na aplição como um todo, optei por usar essa biblioteca, por ser extremamente simples de usar e da um visual bem agradavel na interface.
