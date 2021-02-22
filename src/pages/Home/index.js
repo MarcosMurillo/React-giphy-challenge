@@ -76,7 +76,7 @@ export default function Home({ history }) {
           </button>
         </form>
       </div>
-      <div className="favorite-gifs">
+      <div className="favorites">
         <button
           onClick={() => {
             handleMyGifs();
