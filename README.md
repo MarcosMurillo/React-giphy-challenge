@@ -15,10 +15,6 @@ Esse comando irá instalar todas as dependencias do projeto em sua maquina.
 
 Após a instalação das dependecias da aplição, rode mais esse comando, para a executar a aplicação
 
-### `yarn cypress`
-
-Para rodar os testes desenvolvidos na aplicação, rode apenas esse comando que irá abrir uma nova interface, com as pastas onde se encontra as testes. Dentro dessa pasta podemos dar duplo click no arquivo de teste em que queremos rodar ou podemos rodar todos de uma vez.
-
 # Tecnologias utilizadas.
 
 ## 1. Framework React JS
