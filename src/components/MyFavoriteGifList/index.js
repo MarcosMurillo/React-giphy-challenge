@@ -28,13 +28,22 @@ export default function MyFavoriteGifList() {
               <div className="wrapper">
                 <strong className="text-xl">{gif.title}</strong>
                 <div className="wrapper">
-                  <span className="color-gray text-md">
-                    File size: {gif.size}
-                  </span>
-                  <span className="color-gray text-md">
-                    Created: {gif.created}
-                  </span>
-                  <span className="color-gray text-md">{`Dimensions: ${gif.height}x${gif.width}`}</span>
+                  <p>
+                    <span className="color-gray text-md fw-600">
+                      {`File size: `}
+                    </span>
+                    <span className="color-gray text-md">{gif.size}</span>
+                  </p>
+                  <p>
+                    <span className="color-gray text-md fw-600">{`Created: `}</span>
+                    <span className="color-gray text-md">{gif.created}</span>
+                  </p>
+                  <p>
+                    <span className="color-gray text-md fw-600">{`Dimensions: `}</span>
+                    <span className="color-gray text-md">
+                      {gif.height}x{gif.width}
+                    </span>
+                  </p>
                   <a
                     className="view-original"
                     href={gif.url}
@@ -58,7 +67,9 @@ export default function MyFavoriteGifList() {
           ))
         ) : (
           <div className="feedback-user">
-            <p className="color-primary text-xl">Search to view gifs</p>
+            <p className="color-primary text-xl">
+              Add GIF's to favorites for view
+            </p>
           </div>
         )}
       </ul>

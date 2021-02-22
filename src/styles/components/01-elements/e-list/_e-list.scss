@@ -23,7 +23,9 @@
 
     img {
       align-self: center;
-      max-width: 250px;
+      width: 248px;
+      // aspect-ratio: auto 248 / 140;
+      height: 140px;
     }
 
     span {

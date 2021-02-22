@@ -19,6 +19,7 @@ export default function App() {
           newestOnTop={false}
           closeOnClick
           rtl={false}
+          limit={4}
           pauseOnFocusLoss
           draggable
           pauseOnHover

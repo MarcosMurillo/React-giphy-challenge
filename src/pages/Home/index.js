@@ -38,7 +38,7 @@ export default function Home({ history }) {
     console.log(inputEl.current.value);
     if (inputEl.current.value === "" || inputEl.current.value === null) {
       e.preventDefault();
-      notifySearch("Ops! Informe um valor para realizar a pesquisa");
+      notifySearch("Ops! Inform a value to search");
       return;
     }
     e.preventDefault();
@@ -90,7 +90,7 @@ export default function Home({ history }) {
             handleMyGifs();
           }}
         >
-          <FaStar className="color-white icon-xl" /> My favorite gifs
+          <FaStar className="color-white icon-xl" /> My favorite GIF's
         </button>
       </div>
       <GifList

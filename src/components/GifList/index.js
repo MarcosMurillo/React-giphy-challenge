@@ -61,7 +61,7 @@ export default function GifList({ gifs, hasMore, loadMore }) {
                     handleSaveGif(gif);
                   }}
                 >
-                  <img src={gif.images.fixed_height.url} alt={gif.title} />
+                  <img src={gif.images.original.url} alt={gif.title} />
                   <span>
                     <FaStar className="color-white icon-xl" />
                     Add to favorites
@@ -73,7 +73,7 @@ export default function GifList({ gifs, hasMore, loadMore }) {
         </div>
       ) : (
         <div className="feedback-user">
-          <p className="color-primary text-xl">Search to view gifs</p>
+          <p className="color-primary text-xl">Search GIF's to view</p>
         </div>
       )}
     </>
