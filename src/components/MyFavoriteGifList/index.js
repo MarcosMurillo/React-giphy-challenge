@@ -1,10 +1,13 @@
-import React, { useContext, useState } from "react";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import React, { useContext, useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
+import EditableTitle from "../../components/EditableTitle";
 export default function MyFavoriteGifList() {
-  const { favoriteGifs, removeGif } = useContext(FavoritesGifContext);
-  const [myGifs, setMyGifs] = useState(favoriteGifs);
+  const { favoriteGifs, removeGif, renameGif } = useContext(
+    FavoritesGifContext
+  );
+  const [myGifs, setMyGifs] = useState([]);
 
   function handleRemoveGif(id) {
     const gifId = id;
@@ -14,6 +17,9 @@ export default function MyFavoriteGifList() {
     toast.success("OK ! GIF removed");
   }
 
+  useEffect(() => {
+    setMyGifs(favoriteGifs);
+  }, [favoriteGifs]);
   return (
     <div className="wrapper-my-gifs">
       <ul className="e-my-gifs">
@@ -22,7 +28,10 @@ export default function MyFavoriteGifList() {
             <li key={index}>
               <img src={gif.image} alt={gif.title} />
               <div className="wrapper">
-                <strong className="text-xl">{gif.title}</strong>
+                <EditableTitle
+                  value={gif.title}
+                  onChange={(value) => renameGif(gif.id, value)}
+                />
                 <div className="wrapper">
                   <p>
                     <span className="color-gray text-md fw-600">
@@ -51,7 +60,6 @@ export default function MyFavoriteGifList() {
                 </div>
               </div>
               <div className="wrapper-icons">
-                <FaEdit className="icon-space icon-effect" onClick={() => {}} />
                 <FaTrash
                   className="icon-effect"
                   onClick={() => {

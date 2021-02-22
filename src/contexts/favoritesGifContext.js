@@ -1,9 +1,20 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const FavoritesGifContext = createContext();
 
 export default function FavoritesGifProvider({ children }) {
   const [favoriteGifs, setFavoriteGifs] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(() => {
+    if (window.localStorage.favoriteGifs) {
+      const storedFavoriteGifs = JSON.parse(window.localStorage.favoriteGifs);
+      console.log("storedFavoritegifs: ", storedFavoriteGifs);
+      if (storedFavoriteGifs.list) {
+        setFavoriteGifs(storedFavoriteGifs.list);
+      }
+    }
+  }, []);
 
   function saveGif(gif) {
     const newGif = {
@@ -16,7 +27,19 @@ export default function FavoritesGifProvider({ children }) {
       url: gif.url,
       created: gif.created,
     };
+
     setFavoriteGifs([...favoriteGifs, newGif]);
+
+    let storedFavoriteGifs = [];
+    if (window.localStorage.favoriteGifs) {
+      storedFavoriteGifs = JSON.parse(window.localStorage.favoriteGifs);
+      storedFavoriteGifs = storedFavoriteGifs.list;
+    }
+
+    window.localStorage.setItem(
+      "favoriteGifs",
+      JSON.stringify({ list: [...storedFavoriteGifs, newGif] })
+    );
   }
 
   function removeGif(id) {
@@ -24,10 +47,42 @@ export default function FavoritesGifProvider({ children }) {
     const handleList = favoriteGifs.filter((gif) => gif.id !== gifId);
 
     setFavoriteGifs(handleList);
+
+    window.localStorage.setItem(
+      "favoriteGifs",
+      JSON.stringify({ list: handleList })
+    );
+  }
+
+  function renameGif(id, value) {
+    const gifId = id;
+    const gifTitle = value;
+    const gif = favoriteGifs.find((gif) => gif.id === gifId);
+    gif.title = gifTitle;
+
+    const updatedList = favoriteGifs.map((item) => {
+      if (item.id === gifId) item.title = gifTitle;
+      return item;
+    });
+    setFavoriteGifs(updatedList);
+
+    window.localStorage.setItem(
+      "favoriteGifs",
+      JSON.stringify({ list: updatedList })
+    );
   }
 
   return (
-    <FavoritesGifContext.Provider value={{ favoriteGifs, saveGif, removeGif }}>
+    <FavoritesGifContext.Provider
+      value={{
+        favoriteGifs,
+        saveGif,
+        removeGif,
+        searchResult,
+        setSearchResult,
+        renameGif,
+      }}
+    >
       {children}
     </FavoritesGifContext.Provider>
   );

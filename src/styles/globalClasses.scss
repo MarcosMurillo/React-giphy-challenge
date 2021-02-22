@@ -20,6 +20,16 @@
     }
   }
 }
+.editable-title {
+  display: flex;
+  align-items: center;
+  gap: $m-3;
+}
+.hidden-button {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
 
 .go-back {
   width: 100%;

@@ -1,21 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Header from "../../components/Header";
 import GifList from "../../components/GifList";
 import { FaSearch, FaStar } from "react-icons/fa";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
+import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 
 export default function Home({ history }) {
+  const { searchResult, setSearchResult } = useContext(FavoritesGifContext);
   const [totalCount, setTotalCount] = useState(0);
   const [inputValue, setInputValue] = useState(null);
-  const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const inputEl = useRef("");
   const arraySize = 28;
 
   function resetList() {
-    setGifs([]);
+    setSearchResult([]);
     setOffset(0);
   }
 
@@ -43,7 +44,7 @@ export default function Home({ history }) {
     );
     setTotalCount(data.pagination.total_count);
     setHasMore(true);
-    setGifs(gifs.concat(data.data));
+    setSearchResult(searchResult.concat(data.data));
   }
 
   async function fetchLoadMoreData() {
@@ -53,7 +54,7 @@ export default function Home({ history }) {
         const { data } = await api.get(
           `/search?q=${inputValue}&api_key=I8Tl1S2Ras9ILwz2jV9gBp71B97HCBlA&limit=${arraySize}&offset=${offset}`
         );
-        setGifs(gifs.concat(data.data));
+        setSearchResult(searchResult.concat(data.data));
       }, 1500);
     } else setHasMore(false);
   }
@@ -93,7 +94,7 @@ export default function Home({ history }) {
         offset={offset}
         arraySize={arraySize}
         inputValue={inputValue}
-        gifs={gifs}
+        gifs={searchResult}
         hasMore={hasMore}
         loadMore={() => {
           fetchLoadMoreData();
