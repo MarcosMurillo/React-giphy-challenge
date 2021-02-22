@@ -5,6 +5,10 @@ export const FavoritesGifContext = createContext();
 export default function FavoritesGifProvider({ children }) {
   const [favoriteGifs, setFavoriteGifs] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [inputValue, setInputValue] = useState(null);
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     if (window.localStorage.favoriteGifs) {
@@ -80,6 +84,14 @@ export default function FavoritesGifProvider({ children }) {
         removeGif,
         searchResult,
         setSearchResult,
+        totalCount,
+        setTotalCount,
+        inputValue,
+        setInputValue,
+        offset,
+        setOffset,
+        hasMore,
+        setHasMore,
         renameGif,
       }}
     >

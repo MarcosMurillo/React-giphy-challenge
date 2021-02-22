@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import Header from "../../components/Header";
 import GifList from "../../components/GifList";
 import { FaSearch, FaStar } from "react-icons/fa";
@@ -7,11 +7,18 @@ import { toast } from "react-toastify";
 import { FavoritesGifContext } from "../../contexts/favoritesGifContext";
 
 export default function Home({ history }) {
-  const { searchResult, setSearchResult } = useContext(FavoritesGifContext);
-  const [totalCount, setTotalCount] = useState(0);
-  const [inputValue, setInputValue] = useState(null);
-  const [offset, setOffset] = useState(0);
-  const [hasMore, setHasMore] = useState(false);
+  const {
+    searchResult,
+    setSearchResult,
+    totalCount,
+    setTotalCount,
+    inputValue,
+    setInputValue,
+    offset,
+    setOffset,
+    hasMore,
+    setHasMore,
+  } = useContext(FavoritesGifContext);
   const inputEl = useRef("");
   const arraySize = 28;
 
