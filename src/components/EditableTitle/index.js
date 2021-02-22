@@ -19,7 +19,12 @@ export default function EditableTitle({ value, onChange }) {
 
   return editable ? (
     <form onSubmit={handleSubmit}>
-      <input ref={inputRef} autoFocus onBlur={() => setEditable(false)} />
+      <input
+        className="text-xl fw-600"
+        ref={inputRef}
+        autoFocus
+        onBlur={() => setEditable(false)}
+      />
       <button className="hidden-button" type="submit"></button>
     </form>
   ) : (
