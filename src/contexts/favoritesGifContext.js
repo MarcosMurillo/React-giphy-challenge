@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const FavoritesGifContext = createContext();
 
@@ -32,7 +33,14 @@ export default function FavoritesGifProvider({ children }) {
       created: gif.created,
     };
 
-    setFavoriteGifs([...favoriteGifs, newGif]);
+    const gifAlreadyExists = favoriteGifs.filter(
+      (favoriteGif) => favoriteGif.id === newGif.id
+    );
+    if (gifAlreadyExists.length) return toast.error("Ops! GIF already added");
+    else {
+      setFavoriteGifs([...favoriteGifs, newGif]);
+      toast.success("Very Nice! GIF successfully added");
+    }
 
     let storedFavoriteGifs = [];
     if (window.localStorage.favoriteGifs) {

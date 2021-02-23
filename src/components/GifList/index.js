@@ -21,10 +21,6 @@ export default function GifList({ gifs, hasMore, loadMore }) {
   }
 
   function handleSaveGif(gif) {
-    const gifId = gif.id;
-    const gifAlreadyExists = newGif.filter((gif) => gif.id === gifId);
-    if (gifAlreadyExists.length) return toast.error("Ops! GIF already added");
-
     const updateGif = {
       id: gif.id,
       title: gif.title,
@@ -37,7 +33,6 @@ export default function GifList({ gifs, hasMore, loadMore }) {
     };
     setNewGif([...newGif, updateGif]);
     saveGif(updateGif);
-    toast.success("Very Nice! GIF successfully added");
   }
   return (
     <>
